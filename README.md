@@ -8,18 +8,20 @@ _Build an internal website to create stores, get inventory, price and availabili
 
 ## Specs
 
-| Description                                                            | Input                   | Output                                                                      |
-|------------------------------------------------------------------------|-------------------------|-----------------------------------------------------------------------------|
-                                                                            |
-| Add a store  | target | "Target"|
-| Add Shoes | reebok | "Reebok" |
-| Add price for shoes| 60 | $60.00 |
-| Update store name| foot locker| "Target" -> "Foot Locker"|
-|Delete store| Foot Locker | " "|
-| Update Shoes | Puma | "Reebok" -> "Puma"|
-| Delete Shoes| "Reebok"| " "|
-| See all stores with a certain shoe | "Puma" | "Target", "Foot Locker", "Nordstroms"|
-| See all shoes in a store |"Target" | "Puma", "Reebok", "Nike", "Adidas" |
+| Description                        | Input       | Output                                |
+|------------------------------------|-------------|---------------------------------------|
+|                                    |             |                                       |
+|                                    |             |                                       |
+|                                    |             |                                       |
+| Add a store                        | target      | "Target"                              |
+| Add Shoes                          | reebok      | "Reebok"                              |
+| Add price for shoes                | 60          | $60.00                                |
+| Update store name                  | foot locker | "Target" -> "Foot Locker"             |
+| Delete store                       | Foot Locker | " "                                   |
+| Update Shoes                       | Puma        | "Reebok" -> "Puma"                    |
+| Delete Shoes                       | "Reebok"    | " "                                   |
+| See all stores with a certain shoe | "Puma"      | "Target", "Foot Locker", "Nordstroms" |
+| See all shoes in a store| "Nordstroms" | "Nike", "Puma", "Reebok" |
 
 ## Setup/Installation Requirements
 
