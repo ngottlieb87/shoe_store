@@ -1,10 +1,18 @@
 require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file}
+require "pry"
 
 get('/') do
   @stores = Store.all()
   erb(:index)
+end
+
+get('/all_shoes/') do
+  @stores = Store.all()
+  @brands = Brand.all()
+  binding.pry
+  erb(:all_shoes)
 end
 
 post('/') do
@@ -19,24 +27,21 @@ end
 
 get('/add_shoes/:id') do
   @store = Store.find(params["id"])
-  @stores = Store.all()
   erb(:add_shoes)
 end
 
 post ('/add_shoes/:id') do
-  @store = Store.find(params["id"])
+  @store= Store.find(params["id"])
   make = params["make"]
-  brand= Brand.new({make: make})
-  if brand.save()
+  price = params["price"]
+  brand= Brand.create({make: make, price: price})
+  brand.save()
   @store.brands.push(brand)
-    erb(:add_shoes)
-  else
-    erb(:errors)
-  end
+  erb(:add_shoes)
 end
 
 get('/all_stores_brand/:id') do
-  @brand= Brand.find(params["id"])
+  @brand = Brand.find(params["id"])
   @brands = Brand.all
   @stores = Store.all()
   erb(:all_stores_for_brand)

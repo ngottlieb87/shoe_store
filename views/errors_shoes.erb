@@ -1,0 +1,8 @@
+<h1> An error has occured: </h1>
+<ul>
+  <%@brand.errors().full_messages().each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+
+<h5><a href='/'> Return to the main page and try again.</a></h5>

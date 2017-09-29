@@ -4,7 +4,7 @@
   <div class="col-sm-4">
     <div class="card">
       <h3>Stores: </h3>
-      <% if @brands.any?() %>
+      <% if @brand.stores.any?() %>
         <ul>
           <% @brand.stores.each do |store| %>
             <li><%= store.name %></a></li>

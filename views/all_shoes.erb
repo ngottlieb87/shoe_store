@@ -1,0 +1,14 @@
+<h1>All shoes in all stores</h1>
+
+<% if @brands.any? %>
+<% @brands.each do |brand|%>
+  <li><%= brand.make%></li>
+  <% end %>
+<% end %>
+
+<h1> All Stores </h1>
+<% if @stores.any? %>
+<% @stores.each do |type| %>
+  <li><%= type.name %></li>
+  <% end %>
+<% end %>
