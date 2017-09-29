@@ -26,11 +26,9 @@ end
 post ('/add_shoes/:id') do
   @store = Store.find(params["id"])
   make = params["make"]
-  @brand= Brand.new({make: make})
-  if @brand.save()
-    @store.brands.push(@brand)
-    @brand= Brand.find(params["id"])
-    @stores = Store.all()
+  brand= Brand.new({make: make})
+  if brand.save()
+  @store.brands.push(brand)
     erb(:add_shoes)
   else
     erb(:errors)
@@ -39,6 +37,7 @@ end
 
 get('/all_stores_brand/:id') do
   @brand= Brand.find(params["id"])
+  @brands = Brand.all
   @stores = Store.all()
   erb(:all_stores_for_brand)
 end
