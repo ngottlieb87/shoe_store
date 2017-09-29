@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <h1>Add Shoes to: <%= @store.name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <h3>Shoe: </h3>
+      <% if @store.brands.any?() %>
+        <ul>
+          <% @store.brands.each do |brand| %>
+            <li><a href= '/all_stores_brand/<%= brand.id %>'><%= brand.make %></a></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <h3>Add A New Shoe Brand</h3>
+      <form action="/add_shoes/<%=@store.id%>" method="post">
+        <div class="form-group">
+          <label for="brand_name">Store Name: </label>
+          <input class="form-control" type="text" name="make" autofocus>
+        <button type="submit" class="btn btn-success">Add Shoe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<h5><a href='/'>Return To Homepage</h5>

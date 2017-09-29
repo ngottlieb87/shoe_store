@@ -1,0 +1,18 @@
+<h1> Here are all the stores carrying <%= @brand.make %> </h1>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <h3>Stores: </h3>
+      <% if @brand.stores.any?() %>
+        <ul>
+          <% @brand.stores.each do |store| %>
+            <li><%= store.name %></a></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<h5><a href='/'>Return To Homepage</h5>

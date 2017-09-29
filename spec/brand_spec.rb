@@ -1,10 +1,17 @@
 require("spec_helper")
 
 describe(Brand) do
+
   it("will show name of shoe brand") do
     test_brand = Brand.create({make: "Adidas"})
     expect(test_brand).to eq(test_brand)
   end
+
+    it("ensures length of brand input does not exceed 100 characters") do
+      brand = Brand.new({make: "x".*(101)})
+      expect(brand.save()).to eq(false)
+    end
+
 
 #######Forgot about shoulda-matchers########
 # describe('#stores') do

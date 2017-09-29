@@ -9,7 +9,7 @@
       <% if @stores.any?() %>
         <ul>
           <% @stores.each do |store| %>
-            <li><%= store.name %></li>
+            <li><a href= '/add_shoes/<%= store.id %>'><%= store.name %></a></li>
           <% end %>
         </ul>
       <% end %>
@@ -20,7 +20,7 @@
       <h3>Add A New Store</h3>
       <form action="/" method="post">
         <div class="form-group">
-          <label for="title">Store Name: </label>
+          <label for="store_name">Store Name: </label>
           <input class="form-control" type="text" name="name" autofocus>
         </div>
         <button type="submit" class="btn btn-success">Add Store</button>
