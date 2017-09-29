@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <h1>Store and Shoe Finder</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <h3>Stores:</h3>
+      <% if @stores.any?() %>
+        <ul>
+          <% @stores.each do |store| %>
+            <li><%= store.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <h3>Add A New Store</h3>
+      <form action="/" method="post">
+        <div class="form-group">
+          <label for="title">Store Name: </label>
+          <input class="form-control" type="text" name="name" autofocus>
+        </div>
+        <button type="submit" class="btn btn-success">Add Store</button>
+      </form>
+    </div>
+  </div>
+</div>
