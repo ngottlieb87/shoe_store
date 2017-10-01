@@ -1,13 +1,11 @@
 require('spec_helper')
 
 describe 'The brand creation path', {:type => :feature} do
-  it 'lets the user add shoes brands to a store' do
-    test_store= Store.new({name: "Target", id: nil})
-    test_store.save()
-    id = test_store.id
-    visit "/add_shoes/#{id}"
+  it 'lets the user add shoes' do
+    visit "/add_shoes"
     fill_in('make', :with => "Reebok")
-    fill_in('price', :with => "12.00")
-    expect(page).to have_content("Reebok", "12.00")
+    fill_in('price', :with => 78)
+    click_button('Add Shoes')
+    expect(page).to have_content("Reebok", "$78.00")
   end
 end

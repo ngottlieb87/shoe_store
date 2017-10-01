@@ -1,33 +1,45 @@
-<div class="jumbotron">
-  <h1>Add Shoes to: <%= @store.name %></h1>
-</div>
-
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <div class="card">
-      <h3>Shoe: </h3>
-      <% if @store.brands.any?() %>
-        <ul>
-          <% @store.brands.each do |brand| %>
-            <li><a href= '/all_stores_brand/<%= brand.id %>'><%= brand.make %> <%= brand.price %></a></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-sm-8">
-    <div class="card">
-      <h3>Add A New Shoe Brand</h3>
-      <form action="/add_shoes/<%=@store.id%>" method="post">
+      <h3>Add New Shoe Brand</h3>
+
+      <form action="/add_shoes" method="post">
         <div class="form-group">
-          <label for="brand_name">Shoe Name: </label>
-          <input class="form-control" type="text" name= "make" autofocus>
-          <label for="brand_name">Add Price: </label>
-          <input class="form-control" type="decimal" name="price" autofocus>
-        <button type="submit" class="btn btn-success">Add Shoe</button>
+          <label for="make" class="form-label">Shoe Brand:</label>
+          <input type="text" name="make" class="form-control">
+          <label for="price" class="form-label">Shoe Price:</label>
+          <input type="number" name="price" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Add Shoes</button>
       </form>
     </div>
   </div>
-</div>
+  <div class="col-sm-6">
+    <div class="card">
+      <% if @brands.any?() %>
+      <h3>Here are your Shoe Brands:</h3>
 
-<h5><a href='/'>Return To Homepage</h5>
+      <form action="/delete_brand" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <% @brands.each() do |brand| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"> <a href= "/add_shoes/<%= brand.id %>"><%= brand.make %> $<%= '%.02f' % brand.price%></a>
+          </label>
+        </div>
+      <% end %>
+
+        <button type="submit" class="btn btn-danger">Delete Brands</button>
+      </form>
+
+    <% else %>
+
+        <p>There are currently are no Shoe Brands</p>
+    <% end %>
+    </div>
+    <br>
+    <div class="go home">
+      <a href="/">Return To Homepage</a>
+    </div>
+  </div>
+</div>
