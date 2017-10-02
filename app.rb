@@ -76,7 +76,7 @@ get('/add_shoes_to_store/:id') do
   erb(:add_shoes_to_store)
 end
 
-post ('/add_shoes_to_store/:id') do
+post('/add_shoes_to_store/:id') do
   @store= Store.find(params["id"])
   make = params["make"]
   price = params["price"]
@@ -85,12 +85,21 @@ post ('/add_shoes_to_store/:id') do
   redirect("/add_shoes_to_store/#{@store.id}")
 end
 
+delete('/add_shoes_to_store/:id') do
+  @store = Store.find(params["id"])
+  @store.delete
+  erb(:index)
+end
+
 get('/all_shoes/:id') do
-  @store= Store.find(params["id"])
+  @store = Store.find(params["id"])
+  @stores = Store.all()
   erb(:all_shoes)
 end
 
 get('/all_stores/:id') do
   @brand = Brand.find(params["id"])
+  @brands = Brand.all()
+  @stores = Store.all()
   erb(:all_stores)
 end

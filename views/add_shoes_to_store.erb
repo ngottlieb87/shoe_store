@@ -2,9 +2,9 @@
   <h1>Add Shoes to: <%= @store.name %></h1>
 </div>
 <h3> Current Stock: </h3>
+<ul>
 <% if @store.brands.any? %>
   <% @store.brands.each do |brands| %>
-  <ul>
     <li><%= brands.make %> $ <%= '%.02f' %brands.price %></li>
   <%end%>
   </ul>
@@ -23,6 +23,10 @@
           <input type="number" name="price" class="form-control">
         </div>
         <button type="submit" class="btn btn-success">Add Shoes</button>
+      </form>
+      <form action="/add_shoes_to_store/<%=@store.id %>" method="post">
+        <form action="_method" type="hidden" method="delete">
+        <button type="submit" class= "btn btn-danger"> Delete Store</button>
       </form>
     </div>
   </div>

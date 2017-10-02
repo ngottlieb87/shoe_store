@@ -1,9 +1,9 @@
 <h1> <%= @store.name %> </h1>
 
  <h3> Current Stock: </h3>
+ <ul>
  <% if @store.brands.any? %>
    <% @store.brands.each do |brands| %>
-   <ul>
      <li><%= brands.make %> $<%='%.02f' % brands.price %></li>
    <%end%>
    </ul>
