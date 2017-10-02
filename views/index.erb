@@ -31,7 +31,7 @@
       <h3>Here are your Brands:</h3>
       <ul>
         <% @brands.each() do |brand| %>
-          <li><a href="/brand/<%= brand.id() %>"><%= brand.make() %> $<%= '%.02f' % brand.price %></a></li>
+          <li><a href="/all_stores/<%= brand.id() %>"><%= brand.make() %> $<%= '%.02f' % brand.price %></a></li>
         <% end %>
       </ul>
     <% else %>

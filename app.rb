@@ -82,10 +82,15 @@ post ('/add_shoes_to_store/:id') do
   price = params["price"]
   brand= Brand.create({make: make, price: price})
   @store.brands.push(brand)
-  redirect("/add_shoes_to_store/#{store.id}")
+  redirect("/add_shoes_to_store/#{@store.id}")
 end
 
 get('/all_shoes/:id') do
   @store= Store.find(params["id"])
-erb(:all_shoes)
+  erb(:all_shoes)
+end
+
+get('/all_stores/:id') do
+  @brand = Brand.find(params["id"])
+  erb(:all_stores)
 end

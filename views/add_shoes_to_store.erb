@@ -1,3 +1,47 @@
 <div class="jumbotron">
   <h1>Add Shoes to: <%= @store.name %></h1>
 </div>
+<% if @store.brands.any? %>
+  <% @store.brands.each do |brands| %>
+  <h3> Current Stock: </h3>
+  <ul>
+    <li><%= brands.make %> $ <%= '%.02f' %brands.price %></li>
+  <%end%>
+  </ul>
+  <% else %>
+      <p> Currently no brands for this store </p>
+  <% end %>
+<h1>Add Shoe Brands for this Store</h1>
+<div class= "row">
+  <div class = "col-sm-8">
+    <div class="card">
+      <form action="/add_shoes_to_store/<%=@store.id %>" method="post">
+        <div class="form-group">
+          <label for="make" class="form-label">Shoe Brand:</label>
+          <input type="text" name="make" class="form-control">
+          <label for="price" class="form-label">Shoe Price:</label>
+          <input type="number" name="price" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Add Shoes</button>
+      </form>
+    </div>
+  </div>
+  <div class = "col-sm-4">
+    <div class="card">
+      <form action='/add_shoes_to_store/<%=@store.id%>' method='update'>
+        <input hidden="_method" value= "patch">
+        <% @brands.each() do |brand| %>
+          <div class="checkbox">
+            <label>
+              <input id='shoeID' type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.make %> $<%= '%.02f' % brand.price%>
+            </label>
+          </div>
+        <% end %>
+        <button type="submit" class= "btn btn-primary">Add To Store</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h3><a href='/'> Return To Home</a></h3>
