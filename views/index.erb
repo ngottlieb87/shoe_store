@@ -13,7 +13,7 @@
       <h3>Here are your stores:</h3>
       <ul>
         <% @stores.each() do |store| %>
-          <li><a href="/store/<%= store.id() %>"><%= store.name() %></a> </li>
+          <li><a href="/all_shoes/<%= store.id() %>"><%= store.name() %></a> </li>
         <% end %>
       </ul>
     <% else %>

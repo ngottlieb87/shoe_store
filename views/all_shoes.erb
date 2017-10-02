@@ -1,0 +1,12 @@
+<h1> <%= @store.name %> </h1>
+
+ <% if @store.brands.any? %>
+   <% @store.brands.each do |brands| %>
+   <h3> Current Stock: </h3>
+   <ul>
+     <li><%= brands.make %></li>
+   <%end%>
+   </ul>
+   <% else %>
+       <h3> Currently no brands for this store </h3>
+   <% end %>

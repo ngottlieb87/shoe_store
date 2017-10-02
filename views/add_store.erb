@@ -22,7 +22,7 @@
       <% @stores.each() do |store| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>"> <a href= "store/<%= store.id %>"><%= store.name %></a>
+            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>"> <a href= "add_shoes_to_store/<%= store.id %>"><%= store.name %></a>
           </label>
         </div>
       <% end %>

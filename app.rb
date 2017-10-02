@@ -55,9 +55,6 @@ post('/add_shoes') do
   end
 end
 
-# patch('/add_shoes') do
-#
-# end
 
 delete("/delete_brand") do
   if params.has_key?('brand_ids')
@@ -73,16 +70,22 @@ delete("/delete_brand") do
   end
 end
 
-# get('/add_shoes_to_store/:id') do
-#   @store= Store.find(params["id"])
-#   erb(:add_shoes_to_store)
-# end
+get('/add_shoes_to_store/:id') do
+  @store= Store.find(params["id"])
+  @brands= Brand.all()
+  erb(:add_shoes_to_store)
+end
 
-# post ('/add_shoes/:id') do
-#   @store= Store.find(params["id"])
-#   make = params["make"]
-#   price = params["price"]
-#   brand= Brand.create({make: make, price: price})
-#   @store.brands.push(brand)
-#   erb(:add_shoes)
-# end
+post ('/add_shoes_to_store/:id') do
+  @store= Store.find(params["id"])
+  make = params["make"]
+  price = params["price"]
+  brand= Brand.create({make: make, price: price})
+  @store.brands.push(brand)
+  redirect("/add_shoes_to_store/#{store.id}")
+end
+
+get('/all_shoes/:id') do
+  @store= Store.find(params["id"])
+erb(:all_shoes)
+end

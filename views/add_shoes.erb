@@ -24,17 +24,17 @@
       <% @brands.each() do |brand| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"> <a href= "/add_shoes/<%= brand.id %>"><%= brand.make %> $<%= '%.02f' % brand.price%></a>
+            <input id='shoeID' type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"> <a href= "/add_shoes/<%= brand.id %>"><%= brand.make %> $<%= '%.02f' % brand.price%></a>
           </label>
         </div>
       <% end %>
 
-        <button type="submit" class="btn btn-danger">Delete Brands</button>
+        <button type="submit" class="btn btn-danger">Delete Shoes</button>
       </form>
 
     <% else %>
 
-        <p>There are currently are no Shoe Brands</p>
+        <p>There are currently no shoe brands</p>
     <% end %>
     </div>
     <br>
