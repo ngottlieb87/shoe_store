@@ -1,10 +1,10 @@
 <h1> <%= @store.name %> </h1>
 
+ <h3> Current Stock: </h3>
  <% if @store.brands.any? %>
    <% @store.brands.each do |brands| %>
-   <h3> Current Stock: </h3>
    <ul>
-     <li><%= brands.make %> $ <%='%.02f' % brands.price %></li>
+     <li><%= brands.make %> $<%='%.02f' % brands.price %></li>
    <%end%>
    </ul>
    <% else %>
