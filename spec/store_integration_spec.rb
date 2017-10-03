@@ -7,4 +7,22 @@ require('spec_helper')
       click_button("Add Store")
       expect(page).to have_content("Tina's Shoe Shop")
     end
+
+    it "will delete store from list" do
+      test_store = Store.create({name:"FootLocker"})
+      visit "/add_store"
+      find(:css, "#storeID[value='#{test_store.id}']").set(true)
+      click_button("Delete Selected Stores")
+      expect(page).to have_content("There are currently no stores")
+    end
+
+    it "will update store name" do
+      test_store= Store.create({name: "FootLocker"})
+      test_store.save
+      id = test_store.id
+      visit "/add_shoes_to_store/#{id}"
+      fill_in('name', :with => "Varnery's")
+      click_button("Update Store")
+      expect(page).to have_content("Varnery's")
+    end
   end

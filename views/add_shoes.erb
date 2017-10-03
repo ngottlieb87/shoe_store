@@ -23,7 +23,7 @@
       <% @brands.each() do |brand| %>
         <div class="checkbox">
           <label>
-            <input id='shoeID' type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"> <a href= "/add_shoes/<%= brand.id %>"><%= brand.make %> $<%= '%.02f' % brand.price%></a>
+            <input id='shoeID' type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.make %> $<%= '%.02f' % brand.price%>
           </label>
         </div>
       <% end %>

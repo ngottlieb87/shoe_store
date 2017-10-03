@@ -16,13 +16,13 @@
     <div class="card">
       <% if @stores.any?() %>
       <h3>Here are your stores:</h3>
-
+      <h5> Click On A Link To Access Store Page</h5>
       <form action="/delete_store" method="post">
       <input type="hidden" name="_method" value="delete">
       <% @stores.each() do |store| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>"> <a href= "add_shoes_to_store/<%= store.id %>"><%= store.name %></a>
+            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>" id= "storeID"> <a href= "add_shoes_to_store/<%= store.id %>"><%= store.name %></a>
           </label>
         </div>
       <% end %>
