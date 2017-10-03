@@ -10,7 +10,7 @@
     <br>
     <div class="card bottom">
       <% if @stores.any?() %>
-      <h3>Here are your stores:</h3>
+      <h3>Click On A Store To See Current Stock:</h3>
       <ul>
         <% @stores.each() do |store| %>
           <li><a href="/all_shoes/<%= store.id() %>"><%= store.name() %></a> </li>
@@ -28,7 +28,7 @@
     <br>
     <div class="card bottom">
       <% if @brands.any?() %>
-      <h3>Here are your Brands:</h3>
+      <h3>Click On A Brand To See Stores Carrying This Brand:</h3>
       <ul>
         <% @brands.each() do |brand| %>
           <li><a href="/all_stores/<%= brand.id() %>"><%= brand.make() %> $<%= '%.02f' % brand.price %></a></li>
