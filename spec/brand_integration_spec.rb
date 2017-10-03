@@ -18,6 +18,17 @@ describe 'The brand creation path', {:type => :feature} do
     expect(page).to have_content("There are currently no shoe brands")
   end
 
+  it "will add existing to shoe brand to a store" do
+    test_store = Store.create({name: "Pop's"})
+    test_brand = Brand.create({make:"Reebok", price: 98})
+    test_store.save
+    id =test_store.id
+    visit "/add_shoes_to_store/#{id}"
+    find(:css, "#shoeID[value='#{test_brand.id}']").set(true)
+    click_button("Add To Store")
+    expect(page).to have_content("Reebok", 98)
+  end
+
   it "will take redirect to error page if no selection occurred" do
     test_brand = Brand.create({make:"Reebok", price: 98})
     visit "/add_shoes"
