@@ -15,7 +15,7 @@
 <div class= "row">
   <div class = "col-sm-8">
     <div class="card">
-      <form action="/add_shoes_to_store/<%=@store.id %>" method="post">
+      <form action="/create_shoes_to_store/<%=@store.id %>" method="post">
         <div class="form-group">
           <label for="make" class="form-label">Shoe Brand:</label>
           <input type="text" name="make" class="form-control">
@@ -24,15 +24,11 @@
         </div>
         <button type="submit" class="btn btn-success">Add Shoes</button>
       </form>
-      <form action="/add_shoes_to_store/<%=@store.id %>" method="post">
-        <form action="_method" type="hidden" method="delete">
-        <button type="submit" class= "btn btn-danger"> Delete Store</button>
-      </form>
     </div>
   </div>
   <div class = "col-sm-4">
     <div class="card">
-      <form action='/add_shoes_to_store/<%=@store.id%>' method='update'>
+      <form action='/add_shoes_to_store/<%=@store.id%>' method='post'>
         <input hidden="_method" value= "patch">
         <% @brands.each() do |brand| %>
           <div class="checkbox">
@@ -47,5 +43,18 @@
   </div>
 </div>
 <br>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <form action="/update_store_name/<%=@store.id%>" method="post">
+        <div class="form-group">
+          <label for="name">Update Store Name</label>
+          <input type="text" class="form-control" name="name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Store</button>
+      </form>
+    </div>
+  </div>
+</div>
 <br>
 <h3><a href='/'> Return To Home</a></h3>

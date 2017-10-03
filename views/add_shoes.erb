@@ -18,7 +18,6 @@
     <div class="card">
       <% if @brands.any?() %>
       <h3>Here are your Shoe Brands:</h3>
-
       <form action="/delete_brand" method="post">
       <input type="hidden" name="_method" value="delete">
       <% @brands.each() do |brand| %>
@@ -28,12 +27,9 @@
           </label>
         </div>
       <% end %>
-
         <button type="submit" class="btn btn-danger">Delete Shoes</button>
       </form>
-
     <% else %>
-
         <p>There are currently no shoe brands</p>
     <% end %>
     </div>

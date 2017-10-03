@@ -5,8 +5,11 @@
  <% if @store.brands.any? %>
    <% @store.brands.each do |brands| %>
      <li><%= brands.make %> $<%='%.02f' % brands.price %></li>
+    </ul>
    <%end%>
-   </ul>
    <% else %>
-       <h3> Currently no brands for this store </h3>
+      <h3> Currently no brands for this store </h3>
    <% end %>
+<br>
+<br>
+<a href="/"> Return Home</a>

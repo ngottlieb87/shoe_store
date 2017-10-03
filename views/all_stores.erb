@@ -1,12 +1,14 @@
 <h1> Here are all the stores that carry <%=@brand.make%> </h1>
 
  <% if @brand.stores.any? %>
+    <ul>
+      <h3> Current Stores: </h3>
    <% @brand.stores.each do |stores| %>
-   <h3> Current Stores: </h3>
-   <ul>
      <li><%= stores.name%></li>
    <%end%>
    </ul>
    <% else %>
        <h3> Currently no stores carrying this brand </h3>
    <% end %>
+<br>
+<h3><a href="/"> Return Home</a></h3>

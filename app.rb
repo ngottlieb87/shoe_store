@@ -55,7 +55,6 @@ post('/add_shoes') do
   end
 end
 
-
 delete("/delete_brand") do
   if params.has_key?('brand_ids')
     params.fetch('brand_ids').each do |b|
@@ -76,16 +75,41 @@ get('/add_shoes_to_store/:id') do
   erb(:add_shoes_to_store)
 end
 
-post('/add_shoes_to_store/:id') do
+post('/create_shoes_to_store/:id') do
   @store= Store.find(params["id"])
   make = params["make"]
   price = params["price"]
-  brand= Brand.create({make: make, price: price})
-  @store.brands.push(brand)
+  @brand= Brand.new({make: make, price: price})
+  if @brand.save
+    @store.brands.push(@brand)
+    redirect("/add_shoes_to_store/#{@store.id}")
+  else
+    erb(:errors_shoes)
+  end
+end
+
+post('/add_shoes_to_store/:id') do
+  @store = Store.find(params["id"])
+  if params.has_key?('brand_ids')
+    params.fetch('brand_ids').each do |b|
+      brand= Brand.find(b)
+      @store.brands.push(brand)
+      redirect("/add_shoes_to_store/#{@store.id}")
+    end
+  else
+    erb(:random_errors)
+  end
+end
+
+post('/update_store_name/:id') do
+  @store= Store.find(params["id"])
+  name= params["name"]
+  @store.update({name: name})
   redirect("/add_shoes_to_store/#{@store.id}")
 end
 
 delete('/add_shoes_to_store/:id') do
+  binding.pry
   @store = Store.find(params["id"])
   @store.delete
   erb(:index)

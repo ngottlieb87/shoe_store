@@ -1,4 +1,8 @@
 <div class = "card">
-  <h1>Error Error</h1>
+  <ul>
+    <%@store.errors().full_messages().each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
   <a href="/">Return To Homepage</a>
 </div>

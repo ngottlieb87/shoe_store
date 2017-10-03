@@ -10,9 +10,9 @@ describe 'The brand creation path', {:type => :feature} do
   end
 
   it "will delete shoe brand and price" do
-    visit "/add_shoes"
     test_brand = Brand.create({make:"Reebok", price: 98})
-    find(:css, "#shoeID[value='#{brand.id}']").set(true)
+    visit "/add_shoes"
+    find(:css, "#shoeID[value='#{test_brand.id}']").set(true)
     click_button("Delete Shoes")
     expect(page).to have_content("There are currently no shoe brands")
   end
